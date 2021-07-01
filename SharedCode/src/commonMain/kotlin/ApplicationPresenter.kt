@@ -40,10 +40,9 @@ class ApplicationPresenter : ApplicationContract.Presenter() {
         this.view?.setLabel(string)
     }
 
-    fun requestFromAPI(departureCode: String, arrivalCode: String, currentDateAndTime: String) {
+    override fun requestFromAPI(departureCode: String, arrivalCode: String, currentDateAndTime: String) {
         showLabel("Loading results...")
-        val x = currentDateAndTime
-        val request = launch {
+        launch {
             val response: ApiReply = client.get(
                     "https://mobile-api-softwire1.lner.co.uk/v1/fares?" +
                             "originStation=$departureCode" +
@@ -52,7 +51,7 @@ class ApplicationPresenter : ApplicationContract.Presenter() {
                             "&numberOfAdults=1" +
                             "&numberOfChildren=0" +
                             "&journeyType=single" +
-                            "&outboundDateTime="+currentDateAndTime+"%3A00.000%2B01%3A00" +
+                            "&outboundDateTime=" + currentDateAndTime + "%3A00.000%2B01%3A00" +
                             "&outboundIsArriveBy=false"
             )
             updateResultsTable(response.outboundJourneys)
@@ -61,6 +60,10 @@ class ApplicationPresenter : ApplicationContract.Presenter() {
 
     fun updateResultsTable(data: List<OutboundJourneys>) {
         this.view?.updateResults(data)
-        this.view?.setLabel("")
+        if (data.size > 0) {
+            this.view?.setLabel("")
+        } else {
+            this.view?.setLabel("No trains found!")
+        }
     }
 }

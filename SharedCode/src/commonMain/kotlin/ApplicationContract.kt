@@ -11,5 +11,6 @@ interface ApplicationContract {
 
     abstract class Presenter : CoroutineScope {
         abstract fun onViewTaken(view: View)
+        abstract fun requestFromAPI(departureCode: String, arrivalCode: String, currentDateAndTime: String)
     }
 }
