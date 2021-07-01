@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jetbrains.handson.mpp.mobile.models.OriginStation
 import com.jetbrains.handson.mpp.mobile.models.OutboundJourneys
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class RecycleAdapter(private val journeyList: ArrayList<OutboundJourneys>) : RecyclerView.Adapter<RecycleAdapter.ViewHolder>() {
     // holder class to hold reference
@@ -77,6 +80,9 @@ class MainActivity : AppCompatActivity(), ApplicationContract.View {
     fun onSubmitButtonTapped(view: View) {
         val departureCode : String = departureStationSelected.selectedItem.toString().split(" ").last().replace("[", "").replace("]", "");
         val arrivalCode : String = arrivalStationSelected.selectedItem.toString().split(" ").last().replace("[", "").replace("]", "");
+
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd'at'HH:mm:ss z")
+        val currentDateAndTime: String = simpleDateFormat.format(Date())
 
         presenter.requestFromAPI(departureCode, arrivalCode)
 

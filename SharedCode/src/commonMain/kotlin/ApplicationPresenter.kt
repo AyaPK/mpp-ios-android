@@ -42,17 +42,27 @@ class ApplicationPresenter: ApplicationContract.Presenter() {
 
     fun requestFromAPI(departureCode: String, arrivalCode: String){
         showLabel("Loading results...")
+
         val request = launch {
             val valResponse : ApiReply = client.get(
-                    "https://mobile-api-softwire2.lner.co.uk/v1/fares?originStation=$departureCode&destinationStation=$arrivalCode&noChanges=false&numberOfAdults=2&numberOfChildren=0&journeyType=single&outboundDateTime=2021-07-24T14%3A30%3A00.000%2B01%3A00&outboundIsArriveBy=false"
+                    "https://mobile-api-softwire1.lner.co.uk/v1/fares?" +
+                            "originStation=$departureCode" +
+                            "&destinationStation=$arrivalCode" +
+                            "&noChanges=false" +
+                            "&numberOfAdults=1" +
+                            "&numberOfChildren=0" +
+                            "&journeyType=single" +
+                            "&outboundDateTime=2021-07-24T14%3A30%3A00.000%2B01%3A00" +
+                            "&outboundIsArriveBy=false"
             )
             outboundJourneys = valResponse.outboundJourneys
-            showLabel(outboundJourneys[0].originStation.displayName + "\n" + outboundJourneys[1].originStation.displayName)
+            //showLabel(outboundJourneys[0].originStation.displayName + "\n" + outboundJourneys[1].originStation.displayName)
             updateResultsTable(outboundJourneys)
         }
     }
 
     fun updateResultsTable(data: List<OutboundJourneys>){
         this.view?.updateResults(data)
+        this.view?.setLabel("")
     }
 }
