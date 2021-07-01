@@ -9,7 +9,7 @@ interface ApplicationContract {
         fun updateResults(data: List<OutboundJourneys>)
     }
 
-    abstract class Presenter: CoroutineScope {
+    abstract class Presenter : CoroutineScope {
         abstract fun onViewTaken(view: View)
     }
 }

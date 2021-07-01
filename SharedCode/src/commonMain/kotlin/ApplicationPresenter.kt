@@ -11,7 +11,7 @@ import kotlinx.serialization.json.Json
 import kotlin.coroutines.CoroutineContext
 
 
-class ApplicationPresenter: ApplicationContract.Presenter() {
+class ApplicationPresenter : ApplicationContract.Presenter() {
 
     private val dispatchers = AppDispatchersImpl()
     private var view: ApplicationContract.View? = null
@@ -40,11 +40,11 @@ class ApplicationPresenter: ApplicationContract.Presenter() {
         this.view?.setLabel(string)
     }
 
-    fun requestFromAPI(departureCode: String, arrivalCode: String){
+    fun requestFromAPI(departureCode: String, arrivalCode: String, currentDateAndTime: String) {
         showLabel("Loading results...")
-
+        val x = currentDateAndTime
         val request = launch {
-            val valResponse : ApiReply = client.get(
+            val response: ApiReply = client.get(
                     "https://mobile-api-softwire1.lner.co.uk/v1/fares?" +
                             "originStation=$departureCode" +
                             "&destinationStation=$arrivalCode" +
@@ -52,16 +52,14 @@ class ApplicationPresenter: ApplicationContract.Presenter() {
                             "&numberOfAdults=1" +
                             "&numberOfChildren=0" +
                             "&journeyType=single" +
-                            "&outboundDateTime=2021-07-24T14%3A30%3A00.000%2B01%3A00" +
+                            "&outboundDateTime="+currentDateAndTime+"%3A00.000%2B01%3A00" +
                             "&outboundIsArriveBy=false"
             )
-            outboundJourneys = valResponse.outboundJourneys
-            //showLabel(outboundJourneys[0].originStation.displayName + "\n" + outboundJourneys[1].originStation.displayName)
-            updateResultsTable(outboundJourneys)
+            updateResultsTable(response.outboundJourneys)
         }
     }
 
-    fun updateResultsTable(data: List<OutboundJourneys>){
+    fun updateResultsTable(data: List<OutboundJourneys>) {
         this.view?.updateResults(data)
         this.view?.setLabel("")
     }
