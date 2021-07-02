@@ -2,6 +2,10 @@ import UIKit
 import SharedCode
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource ,ApplicationContractView, UITableViewDelegate {
+    func updateDisplayStations(stations: NSMutableArray) {
+        
+    }
+    
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -57,8 +61,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         dataSource = data
         self.simpleTable.reloadData()
     }
-    func setLabel(text: String) {
     
+    func setLabel(text: String) {
+        label.text = text
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

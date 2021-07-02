@@ -50,6 +50,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLT-1n-mZv">
+                                <rect key="frame" x="28" y="438" width="358" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -57,13 +64,14 @@
                     <connections>
                         <outlet property="arrivalPicker" destination="Efy-V3-JrB" id="Ncv-DE-Gey"/>
                         <outlet property="departurePicker" destination="CXt-0n-OkY" id="OKg-vw-oph"/>
+                        <outlet property="label" destination="pLT-1n-mZv" id="0d7-sh-Vce"/>
                         <outlet property="simpleTable" destination="FVC-28-7df" id="arC-eH-oPy"/>
                         <outlet property="submitButton" destination="6rn-u3-azR" id="AER-lQ-unJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="116.51785714285714"/>
+            <point key="canvasLocation" x="-197.10144927536234" y="-71.651785714285708"/>
         </scene>
     </scenes>
     <resources>

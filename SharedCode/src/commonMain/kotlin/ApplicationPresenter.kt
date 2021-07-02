@@ -59,9 +59,10 @@ class ApplicationPresenter : ApplicationContract.Presenter() {
     }
 
     override fun requestFromAPI(departureCode: String, arrivalCode: String, currentDateAndTime: String) {
-        showLabel("Loading results...")
-        launch {
-            val response: ApiReply = client.get(
+        if (departureCode != arrivalCode) {
+            showLabel("Loading results...")
+            launch {
+                val response: ApiReply = client.get(
                     "https://mobile-api-softwire1.lner.co.uk/v1/fares?" +
                             "originStation=$departureCode" +
                             "&destinationStation=$arrivalCode" +
@@ -71,8 +72,11 @@ class ApplicationPresenter : ApplicationContract.Presenter() {
                             "&journeyType=single" +
                             "&outboundDateTime=" + currentDateAndTime + "%3A00.000%2B01%3A00" +
                             "&outboundIsArriveBy=false"
-            )
-            updateResultsTable(response.outboundJourneys)
+                )
+                updateResultsTable(response.outboundJourneys)
+            }
+        } else {
+            showLabel("Please choose two different stations.")
         }
     }
 
