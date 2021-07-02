@@ -1,12 +1,7 @@
 <resources>
-    <string name="app_name">KotlinMPP</string>
+    <string name="app_name">Trainboard</string>
 
     <string-array name="stations_array">
-        <item>Edinburgh Waverley [EDB]</item>
-        <item>Newcastle [NCL]</item>
-        <item>York [YRK]</item>
-        <item>Kings Cross St. Pancras [KGX]</item>
-        <item>Leeds [LDS]</item>
-        <item>Doncaster [DON]</item>
+
     </string-array>
 </resources>

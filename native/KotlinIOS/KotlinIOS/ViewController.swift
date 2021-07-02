@@ -46,7 +46,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd'T'HH'%3A'mm"
         var date = Date()
-        date = date.addingTimeInterval(60)
+        date = date.addingTimeInterval(70)
         let formattedDate = dateFormat.string(from: date)
         
         presenter.requestFromAPI(departureCode: departurePicked, arrivalCode: arrivalPicked, currentDateAndTime: formattedDate)

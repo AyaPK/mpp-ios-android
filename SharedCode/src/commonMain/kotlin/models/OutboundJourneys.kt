@@ -7,5 +7,6 @@ data class OutboundJourneys(
         val originStation: Station,
         val destinationStation: Station,
         val tickets: List<Tickets>,
-        val departureTime: String
+        val departureTime: String,
+        val arrivalTime: String
 )

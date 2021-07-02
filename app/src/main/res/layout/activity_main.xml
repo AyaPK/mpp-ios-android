@@ -25,12 +25,12 @@
         android:id="@+id/station_names_spinner_departure"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="215dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="323dp"
         android:entries="@array/stations_array"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintHorizontal_bias="0.308"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,12 +38,12 @@
         android:id="@+id/station_names_spinner_arrival"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="89dp"
+        android:layout_marginStart="215dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="323dp"
         android:entries="@array/stations_array"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.308"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/station_names_spinner_departure" />
 
@@ -52,13 +52,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="89dp"
         android:onClick="onSubmitButtonTapped"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
-        app:layout_constraintStart_toStartOf="@+id/station_names_spinner_departure"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/station_names_spinner_departure" />
 
     <androidx.recyclerview.widget.RecyclerView

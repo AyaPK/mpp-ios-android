@@ -1,7 +1,6 @@
 package com.jetbrains.handson.mpp.mobile
 
-import com.jetbrains.handson.mpp.mobile.models.ApiReply
-import com.jetbrains.handson.mpp.mobile.models.OutboundJourneys
+import com.jetbrains.handson.mpp.mobile.models.*
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.KotlinxSerializer
@@ -38,6 +37,25 @@ class ApplicationPresenter : ApplicationContract.Presenter() {
 
     fun showLabel(string: String) {
         this.view?.setLabel(string)
+    }
+
+    fun updateDisplayStations(stations: ArrayList<DisplayStation>){
+        this.view?.updateDisplayStations(stations)
+    }
+
+    override fun requestStationsFromAPI() {
+        launch {
+            val response: StationsReply = client.get(
+                    "https://mobile-api-softwire1.lner.co.uk/v1/stations"
+            )
+            val stations : ArrayList<DisplayStation> = ArrayList<DisplayStation>();
+            for(station in response.stations){
+                if (station.crs != null) {
+                    stations.add(station)
+                }
+            }
+        updateDisplayStations(stations);
+        }
     }
 
     override fun requestFromAPI(departureCode: String, arrivalCode: String, currentDateAndTime: String) {
